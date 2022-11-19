@@ -4,8 +4,7 @@ import Navbar from "../navbar/navbar";
 function MPPage() {
     return (
         <div>
-            <Navbar />
-            
+            <Navbar />           
         </div>
     );
 }
