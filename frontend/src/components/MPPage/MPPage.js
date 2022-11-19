@@ -5,6 +5,7 @@ function MPPage() {
     return (
         <div>
             <Navbar />
+            
         </div>
     );
 }

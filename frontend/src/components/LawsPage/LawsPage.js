@@ -1,8 +1,10 @@
 import React from "react";
+import Navbar from "../navbar/navbar";
+
 function LawsPage() {
     return (
         <div>
-            <h1>Laws</h1>
+            <Navbar />
         </div>
     );
 }
