@@ -10,7 +10,7 @@ function LawsPage() {
   const [laws, setData] = useState([{}])
   
   useEffect(() => {
-    fetch("sima.zapto.org:8071/laws").then(
+    fetch("http://sima.zapto.org:8071/laws").then(
       res => res.json()
     ).then(
       laws => {
@@ -20,13 +20,8 @@ function LawsPage() {
     )
   }, [])
 
-  const mock = [
-    { name: "Obama", score: 3 },
-    { name: "Obama2", score: 5 },
-    { name: "Obama3", score: 44 },
-    { name: "Obama4", score: 7 },
-  ];
-  const [data, setdata] = useState(mock);
+
+  const [data, setdata] = useState(laws);
   const [order, setorder] = useState("ASC");
   const sorting = (col) => {
     if (order === "ASC") {
