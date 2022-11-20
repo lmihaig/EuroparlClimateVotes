@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
 import { useState , useEffect} from 'react';
+import obama from '../images/politician-pic.webp'
 
 function MPPage() {
 
 
-  const [meps, setData] = useState([{}])
+  const [meps, setData] = useState({meps:[{}]})
   
   useEffect(() => {
     fetch("http://sima.zapto.org:8071/meps").then(
@@ -47,7 +48,6 @@ function MPPage() {
       <div>
       <Navbar />
       <div>
-      <img src="images/obama.webp" width="70px" height="70px" />
 
       <table id="example" class="table w-75 mx-auto">
         <thead>
@@ -56,19 +56,27 @@ function MPPage() {
             <th scope="col" onClick={() => sorting("name")}>
               Name
             </th>
-            <th scope="col" onClick={() => sorting("score")}>
-              Score
+            <th scope="col" onClick={() => sorting("pro")}>
+              Pro
+            </th>
+            <th scope="col" onClick={() => sorting("contra")}>
+              Contra
+            </th>
+            <th scope="col" onClick={() => sorting("abstain")}>
+              Abstain
             </th>
           </tr>
         </thead>
         <tbody>
-          {data.map((d) => (
+          {meps.meps.map((d) => (
             <tr>
               <td>
-                <img src="src\components\images\obama.webp" width="70px" height="70px" />
+                <img src={obama} width="70px" height="70px" />
               </td>
               <td>{d.name}</td>
-              <td>{d.score}</td>
+              <td>{d.pro}</td>
+              <td>{d.contra}</td>
+              <td>{d.abstain}</td>
             </tr>
           ))}
         </tbody>
