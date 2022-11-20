@@ -112,7 +112,7 @@ def get_meps():
             meps[mep.name]["abstain"]+=1
 
     return {
-        "meps":sorted(list(meps.values()), key=lambda x:(x["pro"]+x["contra"]+x["abstain"]))
+        "meps":sorted(list(meps.values()), key=lambda x:(x["pro"]+x["contra"]+x["abstain"]), reverse=True)
     }
 
 
