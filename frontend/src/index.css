@@ -1,3 +1,7 @@
+:root {
+    --light-green: #21b80db2;
+    --white: #FFFFFF;
+}
 
 *,
 *::before,
@@ -16,4 +20,32 @@ a {
 img {
     display: block;
     max-width: 100%;
+}
+
+.m-top--40{
+    margin-top:-40px;
+}
+
+.m-top-30 {
+    margin-top: 30px;
+}
+
+.m-top-40 {
+    margin-top: 40px;
+}
+
+.f-size-60 {
+    font-size: 60px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.research-btn {
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--light-green);
+    color: var(--white);
 }
