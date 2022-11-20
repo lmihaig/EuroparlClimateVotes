@@ -4,9 +4,7 @@ import Navbar from "../navbar/navbar";
 function MainPage() {
   return (
     <div>
-      <Navbar />
-
-      <div class="container-nice m-auto">
+      <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="text-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-thermometer-sun m-top-30" viewBox="0 0 16 16">
             <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z" />
@@ -20,7 +18,7 @@ function MainPage() {
         <p class="text-center">
           FIND OUT EVERY POLITICIAN'S VIEW ON THE CLIMATE
         </p>
-        <p class="text-center m-top-40">
+        <p class="text-center">
           How anchored in the current climate issues<br></br>
           are the politicians you support?
         </p>
@@ -28,8 +26,9 @@ function MainPage() {
           A politician's interest in saving our environment should<br></br>
           be a key factor in choosing who to vote.
         </p>
-        <div class="text-center m-top-30">
-          <a href="/MembersOfParliament"><button class="research-btn bold">View Our Research</button></a>
+        <div class="d-flex justify-content-center gap-3" > 
+          <a class="research-btn bold" href="/MembersOfParliament">Members of the European Parliment</a>
+          <a class="research-btn bold" href="/Laws">Voted laws in the European Parliment</a>
         </div>
         <ul class="footer">
           <li><a>About</a></li>

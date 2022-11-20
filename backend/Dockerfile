@@ -6,4 +6,4 @@ WORKDIR /worky
 
 COPY . .
 
-CMD python worker.py
+CMD python app.py

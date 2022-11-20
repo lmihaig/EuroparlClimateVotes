@@ -6,9 +6,12 @@ import re
 import threading
 import time
 from pprint import pprint
+from os import environ
 import model
 model=model.Model()
 import xml.etree.ElementTree as ET
+
+time.sleep(10)
 
 def get_url(day, month, year=2022, lang="FR"):
     return f"https://www.europarl.europa.eu/doceo/document/PV-9-{year}-{month:02}-{day:02}-RCV_{lang}.xml"
@@ -17,8 +20,8 @@ def get_url(day, month, year=2022, lang="FR"):
 FORCE_TIME_SLEEP=60*60
 # 1 day
 NEXT_TIME_SLEEP=60*60*24
-FORCE_BETWEN_NEXTS=NEXT_TIME_SLEEP/FORCE_TIME_SLEEP
-BASE_URL="http://127.0.0.1:5000"
+FORCE_BETWEN_NEXTS=NEXT_TIME_SLEEP//FORCE_TIME_SLEEP
+BASE_URL=environ.get("API_BASE_URL", "http://127.0.0.1:5000")
 session = requests.Session()
 
 def skip_seq(target, seq, count=1): return target.split(seq, count)[-1]
@@ -168,8 +171,8 @@ def next_check():
             })
             break
     print("NEXT check: DONE")
-next_check()
-exit()
+# next_check()
+# exit()
 
 print(day, month, year)
 while True:

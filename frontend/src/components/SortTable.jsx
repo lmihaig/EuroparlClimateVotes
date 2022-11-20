@@ -1,23 +1,8 @@
+import { data } from "jquery";
 import React from "react";
-import Navbar from "../navbar/navbar";
-import { useState , useEffect} from 'react';
+import { useState } from "react";
 
-function MPPage() {
-
-
-  const [meps, setData] = useState([{}])
-  
-  useEffect(() => {
-    fetch("sima.zapto.org:8071/meps").then(
-      res => res.json()
-    ).then(
-      meps => {
-        setData(meps)
-        console.log(meps)
-      }
-    )
-  }, [])
-
+export default function SortTable() {
   const mock = [
     { name: "Obama", score: 3 },
     { name: "Obama2", score: 5 },
@@ -29,7 +14,7 @@ function MPPage() {
   const sorting = (col) => {
     if (order === "ASC") {
       const sorted = [...data].sort((a, b) =>
-        a[col] > b[col] ? 1 : -1
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setdata(sorted);
       setorder("DSC");
@@ -37,21 +22,14 @@ function MPPage() {
 
     if (order === "DSC") {
       const sorted = [...data].sort((a, b) =>
-        a[col] > b[col] ? 1 : -1
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setdata(sorted);
       setorder("ASC");
     }
   };
-
-//   let table = new DataTable('#example', {
-    
-// });
-
-    return(
-      <div>
-      <Navbar />
-      <div>
+  return (
+    <div>
       <table id="example" class="table w-75 mx-auto">
         <thead>
           <tr>
@@ -86,8 +64,5 @@ function MPPage() {
         </tbody>
       </table>
     </div>
-    </div>
   );
 }
-
-export default MPPage;
