@@ -169,7 +169,6 @@ def next_check():
                 "month":month,
                 "year":year,
             })
-            break
     print("NEXT check: DONE")
 # next_check()
 # exit()
