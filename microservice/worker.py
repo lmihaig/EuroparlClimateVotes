@@ -11,6 +11,8 @@ import model
 model=model.Model()
 import xml.etree.ElementTree as ET
 
+time.sleep(10)
+
 def get_url(day, month, year=2022, lang="FR"):
     return f"https://www.europarl.europa.eu/doceo/document/PV-9-{year}-{month:02}-{day:02}-RCV_{lang}.xml"
 

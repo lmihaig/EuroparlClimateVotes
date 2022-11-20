@@ -1,15 +1,15 @@
 version: "3"
 services:
-    frontend:
-        build:
-            context: frontend
-        restart: unless-stopped
-        ports:
-            - 8070:3000
-        networks:
-            default:
-                aliases:
-                    - "frontend"
+    # frontend:
+    #     build:
+    #         context: frontend
+    #     restart: unless-stopped
+    #     ports:
+    #         - 8070:3000
+    #     networks:
+    #         default:
+    #             aliases:
+    #                 - "frontend"
     backend:
         build:
             context: backend
@@ -41,7 +41,11 @@ services:
         build:
             context: microservice
         restart: always
+        networks:
+            default:
+                aliases:
+                    - "microservice"
         environment:
-            API_BASE_URL: http://backend
+            API_BASE_URL: http://backend:5000
         depends_on:
             - backend
