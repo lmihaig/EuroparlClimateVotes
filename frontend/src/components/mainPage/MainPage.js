@@ -30,13 +30,19 @@ function MainPage() {
           <a class="research-btn bold" href="/MembersOfParliament">Members of the European Parliment</a>
           <a class="research-btn bold" href="/Laws">Voted laws in the European Parliment</a>
         </div>
-        <ul class="footer">
-          <li><a>About</a></li>
-          <li><a>Methodology</a></li>
-          <li><a>FAQ</a></li>
-          <li></li>
-        </ul>
+        <footer class="site-footer">
+          <div class="footer-container">
+            <ul class="footer">
+            <li><a>About</a></li>
+            <li><a>Methodology</a></li>
+            <li><a>FAQ</a></li>
+            </ul>
+          </div>
+        </footer>
+      
+       
       </div>
+      
     </div>
   );
 }
