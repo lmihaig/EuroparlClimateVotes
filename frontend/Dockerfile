@@ -1,3 +1,3 @@
 FROM node
 COPY . .
-CMD node run
+CMD npm start

@@ -6,6 +6,7 @@ import re
 import threading
 import time
 from pprint import pprint
+from os import environ
 import model
 model=model.Model()
 import xml.etree.ElementTree as ET
@@ -18,7 +19,7 @@ FORCE_TIME_SLEEP=60*60
 # 1 day
 NEXT_TIME_SLEEP=60*60*24
 FORCE_BETWEN_NEXTS=NEXT_TIME_SLEEP/FORCE_TIME_SLEEP
-BASE_URL="http://127.0.0.1:5000"
+BASE_URL=environ.get("API_BASE_URL", "http://127.0.0.1:5000")
 session = requests.Session()
 
 def skip_seq(target, seq, count=1): return target.split(seq, count)[-1]
