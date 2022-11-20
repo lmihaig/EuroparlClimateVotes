@@ -1,6 +1,7 @@
 :root {
     --light-green: #21b80db2;
     --white: #FFFFFF;
+    --red: #c40e0e;
 }
 
 *,
@@ -13,8 +14,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html *
-{
+html * {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -63,27 +63,42 @@ img {
     list-style-type: none;
 }
 
-.footer li a{
+v .footer li a {
     display: block;
     padding: 15px 20px;
     font-weight: 400;
     font-size: 18px;
+
 }
 
-.site-footer{
+.site-footer {
     position: absolute;
     bottom: 0;
+    width: 100%;
 }
 
-@keyframes rotate{
-    from{transform: rotate(0deg);}
-    to{transform: rotate(360deg);}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.sun{
+.sun {
     transform: rotate(0deg);
     animation-name: rotate;
     animation-duration: 8s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+.politician-pic {
+    border: solid;
+    border-width: 5px;
+    border-color: var(--light-green);
+    border-radius: 35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

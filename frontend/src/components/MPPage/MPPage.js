@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../navbar/navbar";
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import obama from '../images/politician-pic.webp'
 
 function MPPage() {
 
 
-  const [meps, setData] = useState({meps:[{}]})
-  
+  const [meps, setData] = useState({ meps: [{}] })
+
   useEffect(() => {
     fetch("http://sima.zapto.org:8071/meps").then(
       res => res.json()
@@ -41,44 +41,44 @@ function MPPage() {
   };
 
 
-    return(
-      <div>
+  return (
+    <div>
       <Navbar />
       <div>
 
-      <table id="example" class="table w-75 mx-auto">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col" onClick={() => sorting("name")}>
-              Name
-            </th>
-            <th scope="col" onClick={() => sorting("pro")}>
-              Pro
-            </th>
-            <th scope="col" onClick={() => sorting("contra")}>
-              Contra
-            </th>
-            <th scope="col" onClick={() => sorting("abstain")}>
-              Abstain
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {meps.meps.map((d) => (
+        <table id="example" class="table w-75 mx-auto">
+          <thead>
             <tr>
-              <td>
-                <img class="politician-pic" src={obama} width="70px" height="70px" />
-              </td>
-              <td>{d.name}</td>
-              <td>{d.pro}</td>
-              <td>{d.contra}</td>
-              <td>{d.abstain}</td>
+              <th scope="col"></th>
+              <th scope="col" onClick={() => sorting("name")}>
+                Name
+              </th>
+              <th scope="col" onClick={() => sorting("pro")}>
+                Pro
+              </th>
+              <th scope="col" onClick={() => sorting("contra")}>
+                Contra
+              </th>
+              <th scope="col" onClick={() => sorting("abstain")}>
+                Abstain
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {meps.meps.map((d) => (
+              <tr>
+                <td>
+                  <img class="politician-pic" src={obama} width="70px" height="70px" style={{ "border-color": (d.pro > (d.contra + d.abstain)) ? 'var(--light-green)' : 'var(--red)' }} />
+                </td>
+                <td>{d.name}</td>
+                <td>{d.pro}</td>
+                <td>{d.contra}</td>
+                <td>{d.abstain}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
