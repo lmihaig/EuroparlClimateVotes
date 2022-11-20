@@ -27,8 +27,8 @@ img {
     max-width: 100%;
 }
 
-.m-top--40 {
-    margin-top: 0px;
+.m-top-10 {
+    margin-top: 10px;
 }
 
 .m-top-30 {
@@ -73,4 +73,17 @@ img {
 .site-footer{
     position: absolute;
     bottom: 0;
+}
+
+@keyframes rotate{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
+
+.sun{
+    transform: rotate(0deg);
+    animation-name: rotate;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }

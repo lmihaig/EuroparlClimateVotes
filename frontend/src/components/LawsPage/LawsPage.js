@@ -66,9 +66,9 @@ function LawsPage() {
             </th>
           </tr>
         </thead>
-        <tbody>
+            <tbody>
           {meps.laws.map((d) => (
-            <tr>
+            <tr class="tr">
               <td>{d.name}</td>
               <td>{d.pro}</td>
               <td>{d.contra}</td>

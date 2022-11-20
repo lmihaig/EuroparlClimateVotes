@@ -68,7 +68,7 @@ function MPPage() {
           {meps.meps.map((d) => (
             <tr>
               <td>
-                <img src={obama} width="70px" height="70px" />
+                <img class="politician-pic" src={obama} width="70px" height="70px" />
               </td>
               <td>{d.name}</td>
               <td>{d.pro}</td>
