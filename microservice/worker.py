@@ -6,6 +6,8 @@ import re
 import threading
 import time
 from pprint import pprint
+import model
+model=model.Model()
 import xml.etree.ElementTree as ET
 
 def get_url(day, month, year=2022, lang="FR"):
@@ -95,7 +97,7 @@ def extract_votes(url, *, session=session):
             description+=" "+am
 
         returned.append({
-            "address":url,
+            "address":url.replace(".xml", ".pdf"),
             "name":description,
             "pro": list(itertools.chain.from_iterable([[
                     {
@@ -122,23 +124,57 @@ def extract_votes(url, *, session=session):
     return returned
 
 def check_ml(a):
-    return True
+    return model.predict(a)
 
-a=extract_votes(get_url(13, 9))
-for e in a:
-    requests.post("http://127.0.0.1:5000/internal/vote", json=e)
-
-exit()
 
 resp=session.get(BASE_URL+"/internal/state")
 day=resp.json()["day"]
 month=resp.json()["month"]
 year=resp.json()["year"]
 
+def next_date(day, month, year):
+    day+=1
+
+    if day % 32==0:
+        day=1
+        month+=1
+
+    if month%13==0:
+        month=1
+        year+=1
+
+    return day, month, year
+
+def next_check():
+    global day, month, year
+    try_day, try_month, try_year=day, month, year
+    for _ in range(90):
+        try_day, try_month, try_year=next_date(try_day, try_month, try_year)
+        if session.get(get_url(try_day, try_month, try_year)).status_code==200:
+            # FOUND
+            print("FOUND:", try_day, try_month, try_year)
+
+            climate_votes=extract_votes(get_url(try_day, try_month, try_year))
+            for climate_vote in climate_votes:
+                print("adding")
+                requests.post(BASE_URL+"/internal/vote", json=climate_vote)
+
+            day, month, year=try_day, try_month, try_year
+            # save state
+            session.post(BASE_URL+"/internal/state", json={
+                "day":day,
+                "month":month,
+                "year":year,
+            })
+            break
+    print("NEXT check: DONE")
+next_check()
+exit()
+
 print(day, month, year)
 while True:
 
-    # DO NEXT CHECK
+    next_check()
 
     for _ in range(FORCE_BETWEN_NEXTS):
 
