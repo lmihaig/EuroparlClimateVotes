@@ -13,6 +13,11 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html *
+{
+    font-family: 'Roboto', sans-serif;
+}
+
 a {
     text-decoration: none;
 }
@@ -48,4 +53,4 @@ img {
     border: none;
     background-color: var(--light-green);
     color: var(--white);
-}
+  }
