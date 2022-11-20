@@ -171,8 +171,8 @@ def next_check():
             })
             break
     print("NEXT check: DONE")
-next_check()
-exit()
+# next_check()
+# exit()
 
 print(day, month, year)
 while True:

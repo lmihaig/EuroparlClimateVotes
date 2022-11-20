@@ -19,7 +19,7 @@ services:
         networks:
             default:
                 aliases:
-                    - "backend"
+                    - "backend.server"
         environment:
             MONGO_HOST: mongo_db
             # MONGO_USER:
@@ -46,6 +46,6 @@ services:
                 aliases:
                     - "microservice"
         environment:
-            API_BASE_URL: http://backend:5000
+            API_BASE_URL: http://backend.server:5000
         depends_on:
             - backend

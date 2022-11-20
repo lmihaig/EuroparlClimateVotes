@@ -106,9 +106,9 @@ def get_meps():
             meps[mep.name]["abstain"]+=1
 
     return {
-        "meps":list(meps.values())
+        "meps":sorted(list(meps.values()), key=lambda x:(x["pro"]+x["contra"]+x["abstain"]))
     }
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
