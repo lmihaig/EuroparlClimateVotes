@@ -1,5 +1,5 @@
 import pickle
-
+import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 
 
@@ -7,7 +7,8 @@ class Model:
     def __init__(self):
         vocabulary = pickle.load(open('trained_vect.pkl', 'rb'))
         self.vectorizer = CountVectorizer(decode_error='replace', vocabulary=vocabulary)
-        self.nlp = pickle.load(open('nlp.pkl', 'rb'))
+        # e nevoie de $python -m spacy download en_core_web_sm
+        self.nlp = spacy.load('en_core_web_sm')
         self.model = pickle.load(open('trained_model.pkl', 'rb'))
 
     def predict(self, text):
