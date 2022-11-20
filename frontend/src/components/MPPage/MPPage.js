@@ -40,9 +40,6 @@ function MPPage() {
     }
   };
 
-//   let table = new DataTable('#example', {
-    
-// });
 
     return(
       <div>
