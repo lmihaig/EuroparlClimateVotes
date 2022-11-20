@@ -30,7 +30,7 @@ function Navbar() {
                 navigate("/Laws");
               }}
             >
-              List Of Laws
+              Voted laws in the European Parliment
             </button>
           </div>
         </div>
