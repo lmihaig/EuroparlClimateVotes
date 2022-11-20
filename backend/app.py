@@ -5,6 +5,12 @@ from documents import *
 app = Flask(__name__)
 api = Api(app)
 
+@app.after_request
+def after_request_func(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
 @api.route('/internal/vote')
 class vote(Resource):
     def post(self):
